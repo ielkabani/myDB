@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: myDB
+  datasource:
+    url: jdbc:mysql://localhost:3306/mymarket?createDatabaseIfNotExist=true
+    username: root
+    password: P@ssword
