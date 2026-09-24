@@ -59,6 +59,11 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>annotationProcessor</scope>
+        </dependency>
 
     </dependencies>
 
@@ -67,6 +72,16 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>12.4.0</version>
+                <configuration>
+                    <url> jdbc:mysql://localhost:3306/mymarket?createDatabaseIfNotExist=true</url>
+                    <user>root</user>
+                    <password>P@ssword</password>
+                </configuration>
             </plugin>
         </plugins>
     </build>
