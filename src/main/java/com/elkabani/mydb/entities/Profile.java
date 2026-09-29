@@ -31,4 +31,9 @@ public class Profile {
     @Column(name = "loyalty_points", columnDefinition = "int UNSIGNED")
     private Integer loyaltyPoints;
 
+    @JoinColumn(name="id")
+    @MapsId
+    @OneToOne
+    private User user;
+
 }

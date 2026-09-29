@@ -3,7 +3,12 @@ package com.elkabani.mydb.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
+import java.util.ArrayList;
+import java.util.List;
+
+@ToString
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -23,5 +28,22 @@ public class User {
 
     @Column(nullable=false, name="password")
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    @Builder.Default
+    private List<Address> addresses = new ArrayList<>();
+
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
+
+    public void addAddress(Address address) {
+        addresses.add(address);
+        address.setUser(this);
+    }
+
+    public void removeAddress(Address address){
+        addresses.remove(address);
+        address.setUser(null);
+    }
 
 }

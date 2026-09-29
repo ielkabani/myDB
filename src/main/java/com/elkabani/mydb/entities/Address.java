@@ -3,7 +3,7 @@ package com.elkabani.mydb.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-
+@ToString
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,4 +23,9 @@ public class Address {
     private String state;
     @Column(name="zip", nullable = false)
     private String zipCode;
+
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 }
