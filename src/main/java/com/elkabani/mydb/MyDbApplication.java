@@ -15,9 +15,12 @@ public class MyDbApplication {
 
       ApplicationContext context = SpringApplication.run(MyDbApplication.class, args);
     //  var repository = context.getBean(UserRepository.class);
-        var service = context.getBean(UserService.class);
+    //    var service = context.getBean(UserService.class);
     //    service.showEntityState();
-        service.showRelatedEntities();
+    //    service.showRelatedEntities();
+     //  service.PersistRelated();
+      //     service.deleteRelated();
+
   /*    var user = User.builder()
                 .name("John")
                 .email("john@example.com")

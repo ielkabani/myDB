@@ -1,5 +1,6 @@
 package com.elkabani.mydb.services;
 
+import com.elkabani.mydb.entities.Address;
 import com.elkabani.mydb.entities.User;
 import com.elkabani.mydb.repositories.ProfileRepository;
 import com.elkabani.mydb.repositories.UserRepository;
@@ -45,5 +46,34 @@ public class UserService {
         var profile = profileRepository.findById((2L)).orElseThrow();
         //System.out.println((profile.getBio()));
         System.out.println((profile.getUser().getEmail()));
+    }
+
+    public void PersistRelated()
+    {
+        var user = User.builder()
+                .name("Mike Smith")
+                .email("mike@example.com")
+                .password("password")
+                .build();
+
+        var address = Address.builder()
+                .street("Vine Street")
+                .city("Cincinnati")
+                .state("OH")
+                .zipCode("45202")
+                .build();
+
+        user.addAddress(address);
+        userRepository.save(user);
+    }
+
+    @Transactional
+    public void deleteRelated()
+    {
+       // userRepository.deleteById(6L);
+        var user = userRepository.findById(7L).orElseThrow();
+        var address = user.getAddresses().getFirst();
+        user.removeAddress(address);
+        userRepository.save(user);
     }
 }
